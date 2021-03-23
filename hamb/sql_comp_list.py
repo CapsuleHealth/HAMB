@@ -25,6 +25,8 @@ class SqlCompare(object):
         self.conn_b = self.test_conf["conn_b"]
         print(f"conn_a: {self.conn_a}")
         print(f"conn_b: {self.conn_b}")
+        self.warning_threshold = self.test_conf["warning_threshold"]
+        self.failure_threshold = self.test_conf["failure_threshold"]
         self.aws_access_key = None
         self.aws_secret_key = None
 
@@ -121,10 +123,12 @@ class SqlCompare(object):
 
         diff = list(set(result_a).symmetric_difference(set(result_b)))
 
-        if diff:
+        if len(diff) > self.failure_threshold:
             status = "failure"
+        elif len(diff) > self.warning_threshold:
+            status = "warning"
         else:
-            diff = None
+            # diff = None
             status = "success"
 
         detail = {
