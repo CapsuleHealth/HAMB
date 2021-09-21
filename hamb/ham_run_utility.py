@@ -262,7 +262,9 @@ class TestEngine(object):
                 result_b=", ".join(str(d) for d in detail["result_b"])
                 if isinstance(detail["result_b"], list)
                 else detail["result_b"],
-                diff=detail["diff"] if detail["diff"] is not None else 0,
+                diff=", ".join(str(d) for d in detail["diff"])
+                if isinstance(detail["diff"], list)
+                else detail["diff"],
                 warning=manifest_config["warning_threshold"],
                 failure=manifest_config["failure_threshold"],
                 env=db_env,
