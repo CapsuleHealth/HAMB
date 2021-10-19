@@ -116,5 +116,5 @@ def json_serializer(data):
         serial = data.isoformat()
         return serial
     else:
-        return (str(data))
+        return str(data)
     # raise TypeError("Type not serializable")
