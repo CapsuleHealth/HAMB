@@ -177,7 +177,7 @@ class TestEngine(object):
             job.append(detail["test"])
             stat.append(detail["status"])
             LOG.l(status)
-            LOG.l(detail)
+            # LOG.l(detail)
 
             # Save execution results to db
             if db_log_table is not None:

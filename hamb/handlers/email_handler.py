@@ -115,4 +115,6 @@ def json_serializer(data):
     elif isinstance(data, datetime):
         serial = data.isoformat()
         return serial
-    raise TypeError("Type not serializable")
+    else:
+        return str(data)
+    # raise TypeError("Type not serializable")
