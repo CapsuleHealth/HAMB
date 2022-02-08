@@ -44,7 +44,7 @@ class Handler(object):
 
             if level == "success" or not with_attachment:
                 json_msg = json.dumps(
-                        result,
+                        result["summary"],
                         indent=4,
                         default=json_serializer
                 )
@@ -61,7 +61,7 @@ class Handler(object):
 
             else:
                 json_msg = (
-                    json.dumps(result, indent=4, default=json_serializer)
+                    json.dumps(result["summary"], indent=4, default=json_serializer)
                     .replace(" ", "&nbsp;")
                     .replace("\n", "<br>")
                 )
